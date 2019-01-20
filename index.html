@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="utf-8" />
+    <title>1766平台管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Layui框架CSS样式 -->
+    <link rel="stylesheet" href="assets/libs/layui/css/layui.css" />
+    <link rel="stylesheet" href="assets/css/layer.css" />
+    <link rel="stylesheet" href="module/formSelects/formSelects-v4.css" />
+    <link rel="stylesheet" href="assets/libs/zTree/css/metroStyle/metroStyle.css" />
+
+    <!--umeditor编辑器-->
+    <link rel="stylesheet" href="assets/libs/umeditor/css/umeditor.css">
+
+    <!-- 整个网页布局自定义样式 -->
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/public.css">
+</head>
+
+<body class="platform-layout-body">
+    <div class="platform-layout platform-layout-admin">
+        <!-- 公共头部部分 -->
+        <div class="platform-header" p-com="header"></div>
+
+        <!-- 网页主体部分 -->
+        <div class="platform-body">
+            <div class="container">
+                <div class="home-container">
+                    <div class="left">
+                        <div class="platform-nav" p-com="nav">
+
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="right-content">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 公共版权所有 -->
+        <div class="platform-footer" p-com="footer"></div>
+    </div>
+</body>
+
+<!-- 注意：该框架核心基于Layui和Jquery 以下文件引用顺序是有先后关系的 -->
+<script type="text/javascript" src="assets/libs/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="assets/libs/q.js"></script>
+<script type="text/javascript" src="assets/libs/pandyle.min.js"></script>
+<script type="text/javascript" src="assets/libs/layui/layui.js"></script>
+<script type="text/javascript" src="module/address.js"></script>
+<script type="text/javascript" src="assets/libs/zTree/js/jquery.ztree.all-3.5.min.js"></script>
+
+<!--umeditor编辑器-->
+<script type="text/javascript" src="assets/libs/umeditor/umeditor.config.js"></script>
+<script type="text/javascript" src="assets/libs/umeditor/umeditor.min.js"></script>
+<script type="text/javascript" src="assets/libs/umeditor/lang/zh-cn/zh-cn.js"></script>
+
+<!--echarts图-->
+<script type="text/javascript" src="assets/libs/echarts.min.js"></script>
+
+<!-- 初始化数据及引用模块 -->
+<script>
+    layui.config({
+        base: 'module/'
+    }).extend({
+        formSelects: 'formSelects/formSelects-v4',
+        treetable: 'treetable-lay/treetable'
+    }).use(['config', 'index', 'element', 'jquery', 'tempData'], function() {
+        var config = layui.config;
+        var index = layui.index;
+        var element = layui.element;
+        var tempData = layui.tempData;
+
+        // 检查是否登录
+        // if (!config.getToken() || config.getToken() == '') {
+        //     location.replace('login.html');
+        //     return;
+        // }
+
+        // 加载网页头部、导航、底部组件
+        $('.platform-layout-admin .platform-header').vm();
+        $('.platform-layout-admin .platform-nav').vm();
+        $('.platform-layout-admin .platform-footer').vm();
+
+        // index.initLeftNav();
+
+        //开启页面路由
+        index.initRouter();
+
+        //页面加载事件
+        index.bindEvent();
+    });
+</script>
+
+</html>

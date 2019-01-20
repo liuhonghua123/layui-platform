@@ -1,0 +1,79 @@
+<div class="service_hall">
+    <div class="app-nav-serach">
+        <span>服务大厅</span>
+    </div>
+    <div class="service-hall-list">
+        <header>
+            <span class="service-hall-list-index">1</span>
+            <input class="service-hall-list-title" value="服务大厅" disabled>
+            <i class="service-hall-list-edit">编辑</i>
+            <i class="service-hall-list-comfirm">确定</i>
+        </header>
+        <img class="service-hall-background" src="assets/images/default.jpg" alt="">
+        <div class="service-hall-active">
+            <div class="service-hall-link">
+                链接
+                <div class="service-hall-link-copy">
+                    <div class="service-hall-link-copy-container">
+                        <input type="text">
+                        <input type="button" value="复制">
+                    </div>
+                </div>
+            </div>
+            <div class="service-hall-code">
+                二维码
+                <div class="service-hall-code-qrimg">
+                    <div class="service-hall-code-qrimg-container">
+                        <canvas style="width: 140px; height: 140px;"></canvas>
+                    </div>
+                </div>
+            </div>
+            <a href="#!service_hall_edit" class="service-hall-edit">编辑</a>
+        </div>
+    </div>
+    <div class="service-hall-add">添加服务大厅</div>
+</div>
+<script>
+    layui.use(['index', 'admin'], function() {
+        initIsDispalyAdd();
+        var index = layui.index;
+
+        Q.reg('service_hall_edit', function() {
+            var menuId = 'service_hall_edit';
+            var menuPath = 'pages/service/service_hall_edit.html';
+            var menuName = '服务大厅-编辑页面';
+            index.loadView(menuId, menuPath, menuName);
+        });
+
+        function initIsDispalyAdd() {
+            var serviceHallListNum = $(".service_hall").children(".service-hall-list").length;
+            if (serviceHallListNum >= 3) {
+                $(".service-hall-add").hide();
+            } else {
+                $(".service-hall-add").show();
+            }
+        }
+
+        $(".service-hall-add").click(function() {
+            var tHtml = $(".service-hall-add").prev().html();
+            var tListPre = "<div class='service-hall-list'>";
+            var tListNext = "</div>";
+            var insertValue = tListPre + tHtml + tListNext;
+            $(this).prev().after(insertValue);
+            initIsDispalyAdd();
+        });
+
+        $(".service-hall-list-edit").click(function() {
+            $(".service-hall-list-title").attr("disabled", false);
+            $(".service-hall-list-comfirm").show();
+            $(".service-hall-list-edit").hide();
+        });
+
+        $(".service-hall-list-comfirm").click(function() {
+            $(".service-hall-list-title").attr("disabled", true);
+            $(".service-hall-list-comfirm").hide();
+            $(".service-hall-list-edit").show();
+            layer.msg("修改成功");
+        });
+    });
+</script>

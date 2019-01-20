@@ -1,0 +1,176 @@
+<div class="operator_recode">
+    <div class="app-nav-serach">
+        <span>操作记录</span>
+    </div>
+    <div class="operator-recode-notify">
+        提示: 仅展示最近
+        <div class="operator-recode-text-notify">10天</div>
+        的操作记录。
+    </div>
+    <div class="mood">
+        <div class="width-title fl">操作分类</div>
+        <div class="mood-type">
+            <ul>
+                <li class="active">
+                    <a>应用</a>
+                </li>
+                <li>
+                    <a>群发</a>
+                </li>
+                <li>
+                    <a>校园卡</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--应用-->
+    <div id="operatorRecodeApp" class="layui-card-body" style="padding: 0;">
+        <table class="layui-table" id="operator-recode-app" lay-filter="operator-recode" style="margin: 0;"></table>
+    </div>
+    <!--群发-->
+    <div id="operatorRecodeGroup" class="layui-card-body" style="padding: 0; display: none;">
+        <table class="layui-table" id="operator-recode-group" lay-filter="operator-recode" style="margin: 0;"></table>
+    </div>
+    <!--校园卡-->
+    <div id="operatorRecodeCard" class="layui-card-body" style="padding: 0; display: none;">
+        <table class="layui-table" id="operator-recode-card" lay-filter="operator-recode" style="margin: 0;"></table>
+    </div>
+</div>
+
+<script>
+</script>
+
+<script>
+    layui.use(['form', 'table', 'util', 'config', 'admin', 'tempData'], function() {
+        var form = layui.form;
+        var table = layui.table;
+        var config = layui.config;
+        var layer = layui.layer;
+        var util = layui.util;
+        var admin = layui.admin;
+        var tempData = layui.tempData;
+
+        // 渲染表格 应用
+        table.render({
+            elem: '#operator-recode-app',
+            data: tempData.opeartorRecodeApp,
+            method: 'GET',
+            page: true,
+            cols: [
+                [{
+                    type: 'numbers',
+                    checkbox: true,
+                    fixed: true
+                }, {
+                    field: 'userId',
+                    sort: true,
+                    title: '编号'
+                }, {
+                    field: 'userAdmin',
+                    sort: true,
+                    title: '管理员'
+                }, {
+                    field: 'app',
+                    sort: true,
+                    title: '应用'
+                }, {
+                    field: 'operatorTime',
+                    sort: true,
+                    title: '操作时间'
+                }, {
+                    field: 'operator',
+                    sort: true,
+                    title: '操作'
+                }]
+            ]
+        });
+
+        // 渲染表格 群发
+        table.render({
+            elem: '#operator-recode-group',
+            data: tempData.opeartorRecodeGroup,
+            method: 'GET',
+            page: true,
+            cols: [
+                [{
+                    type: 'numbers',
+                    checkbox: true,
+                    fixed: true
+                }, {
+                    field: 'userId',
+                    sort: true,
+                    title: '编号'
+                }, {
+                    field: 'userAdmin',
+                    sort: true,
+                    title: '管理员'
+                }, {
+                    field: 'operatorTime',
+                    sort: true,
+                    title: '操作时间'
+                }]
+            ]
+        });
+
+        // 渲染表格 校园卡
+        table.render({
+            elem: '#operator-recode-card',
+            data: tempData.opeartorRecodeCard,
+            method: 'GET',
+            page: true,
+            cols: [
+                [{
+                    type: 'numbers',
+                    checkbox: true,
+                    fixed: true
+                }, {
+                    field: 'userId',
+                    sort: true,
+                    title: '编号'
+                }, {
+                    field: 'userAdmin',
+                    sort: true,
+                    title: '管理员'
+                }, {
+                    field: 'card',
+                    sort: true,
+                    title: '校园卡'
+                }, {
+                    field: 'operatorTime',
+                    sort: true,
+                    title: '操作时间'
+                }, {
+                    field: 'operator',
+                    sort: true,
+                    title: '操作'
+                }]
+            ]
+        });
+
+
+        //应用  群发  校园卡切换
+        $(".mood-type li").click(function() {
+            $(this).siblings().removeClass("active");
+            $(this).addClass("active");
+
+            var app = $(".mood-type li:nth-of-type(1)").attr('class');
+            var Group = $(".mood-type li:nth-of-type(2)").attr('class');
+            var Card = $(".mood-type li:nth-of-type(3)").attr('class');
+
+            if (app == 'active') {
+                $("#operatorRecodeApp").show();
+                $("#operatorRecodeGroup").hide();
+                $("#operatorRecodeCard").hide();
+            } else if (Group == 'active') {
+                $("#operatorRecodeApp").hide();
+                $("#operatorRecodeGroup").show();
+                $("#operatorRecodeCard").hide();
+            } else {
+                $("#operatorRecodeApp").hide();
+                $("#operatorRecodeGroup").hide();
+                $("#operatorRecodeCard").show();
+            }
+
+        });
+    });
+</script>

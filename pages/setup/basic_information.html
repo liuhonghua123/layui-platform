@@ -1,0 +1,84 @@
+<div class="app-center">
+    <form class="layui-form" action="">
+        <div class="app-nav-serach">
+            <span>基本信息</span>
+        </div>
+
+        <div class="basic-information">
+            <!-- 基本信息 -->
+            <div class="basic-info">
+                <div class="basic-info-icon">
+                    <img src="assets/images/flag.png" alt="">
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label" style="width:110px; padding: 9px 0;">单位名称：</label>
+                    <div class="layui-input-block" style="margin-left:120px;">
+                        <input type="text" name="title" required lay-verify="required" placeholder="请输入机构名称" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label" style="width:110px; padding: 9px 0;">所在位置：</label>
+                    <div class="layui-input-inline" style="width: 123px; margin-left: 10px; margin-right: 0;">
+                        <select name="province" lay-filter="province" class="province">
+                        <option value="">请选择省</option>
+                    </select>
+                    </div>
+                    <div class="layui-input-inline" style="width: 123px; margin-left: 10px; margin-right: 0;">
+                        <select name="city" lay-filter="city" class="city" disabled>
+                        <option value="">请选择市</option>
+                    </select>
+                    </div>
+                    <div class="layui-input-inline" style="width: 123px; margin-left: 10px; margin-right: 0;">
+                        <select name="area" lay-filter="area" class="area" disabled>
+                        <option value="">请选择县/区</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label" style="width:110px; padding: 9px 0;">微公众号：</label>
+                    <div class="layui-input-block" style="margin-left:120px;">
+                        <input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 金融帐号 -->
+            <div class="finance-amount">
+                <div class="basic-title" style="margin-bottom:50px;">金融帐号</div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label" style="width:110px; padding: 9px 0;">开户名称：</label>
+                    <div class="layui-input-block" style="margin-left:120px;">
+                        <input type="text" name="title" required lay-verify="required" placeholder="请输入开户名称" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label" style="width:110px; padding: 9px 0;">开户银行：</label>
+                    <div class="layui-input-block" style="margin-left:120px;">
+                        <input type="text" name="title" required lay-verify="required" placeholder="请输入开户银行" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label" style="width:110px; padding: 9px 0;">银行帐号：</label>
+                    <div class="layui-input-block" style="margin-left:120px;">
+                        <input type="text" name="title" placeholder="请输入银行帐号" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label" style="width:110px; padding: 9px 0;">银行帐号：</label>
+                    <div class="layui-input-block" style="margin-left:120px;">
+                        <input type="text" name="title" placeholder="请输入银行帐号" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    layui.use(['form', 'address'], function() {
+        var form = layui.form;
+
+        //基于layui的省、市、区县三级联动模块
+        var $ = layui.jquery;
+        var address = layui.address();
+    });
+</script>

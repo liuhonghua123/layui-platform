@@ -1,0 +1,222 @@
+<div class="fans-count">
+    <div class="app-nav-serach">
+        <span>粉丝统计</span>
+    </div>
+
+    <!--新增粉丝管理  本月活跃粉丝 累计粉丝数量-->
+    <div class="fans-count-notify">
+        <div class="fans-count-box">
+            <div class="fans-title">新增粉丝管理</div>
+            <div class="fans-num">126</div>
+            <div class="fans-count-day">日 8%</div>
+            <div class="fans-count-week">周 5%</div>
+            <div class="fans-count-month">月 2%</div>
+        </div>
+        <div class="fans-count-box">
+            <div class="fans-title">本月活跃粉丝</div>
+            <div class="fans-num">126</div>
+            <div class="fans-count-day">日 30%</div>
+            <div class="fans-count-week">周 50%</div>
+            <div class="fans-count-month">月 80%</div>
+        </div>
+        <div class="fans-count-box">
+            <div class="fans-title">累计粉丝数量</div>
+            <div class="fans-num">126</div>
+            <div class="fans-count-day">日 上升20%</div>
+            <div class="fans-count-week">周 上升60%</div>
+            <div class="fans-count-month">月 上升80%</div>
+        </div>
+    </div>
+
+    <!--新增人数  取消关注人数 净增人数 累积人数-->
+    <div class="mood">
+        <div class="mood-type">
+            <ul>
+                <li class="active">
+                    <a>新增人数</a>
+                </li>
+                <li>
+                    <a>取消关注人数</a>
+                </li>
+                <li>
+                    <a>净增人数</a>
+                </li>
+                <li>
+                    <a>累积人数</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!--新增人数-->
+    <div id="lineMapNewNumber"></div>
+
+    <!--累积人数-->
+    <div id="lineMapCumulativeStatistics" style="display:none;"></div>
+</div>
+<script type="text/javascript">
+    //加载新增人数统计
+    $(function() {
+        lineMapNewNumber();
+    });
+
+    //新增人数  取消关注人数  净增人数  累积人数
+    $(".mood-type li").click(function() {
+        $(this).siblings().removeClass("active");
+        $(this).addClass("active");
+
+        var NewNumber = $(".mood-type li:nth-of-type(1)").attr('class');
+        var abolishConcern = $(".mood-type li:nth-of-type(2)").attr('class');
+        var NewIncrease = $(".mood-type li:nth-of-type(3)").attr('class');
+        var CumulativeStatistics = $(".mood-type li:nth-of-type(4)").attr('class');
+
+        if (NewNumber == 'active') {
+            $("#lineMapNewNumber").show();
+            lineMapNewNumber();
+            $("#lineMapCumulativeStatistics").hide();
+        } else if (abolishConcern == 'active') {
+            $("#lineMapNewNumber").hide();
+            $("#lineMapCumulativeStatistics").hide();
+        } else if (NewIncrease == 'active') {
+            $("#lineMapNewNumber").hide();
+            $("#lineMapCumulativeStatistics").hide();
+        } else if (CumulativeStatistics == 'active') {
+            $("#lineMapNewNumber").hide();
+            $("#lineMapCumulativeStatistics").show();
+            lineMapCumulativeStatistics();
+        }
+    });
+
+    //新增人数统计
+    function lineMapNewNumber() {
+        var dom = document.getElementById("lineMapNewNumber");
+        var myChart = echarts.init(dom);
+        var app = {};
+        option = null;
+        option = {
+            title: {
+                // text: '折线图堆叠'
+            },
+
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['新增人数']
+            },
+            grid: {
+                left: '2%',
+                right: '6%',
+                bottom: '20%',
+                containLabel: true
+            },
+
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['2017-01-01', '2017-03-01', '2017-05-01', '2017-08-01', '2017-10-01']
+            },
+
+
+            lineStyle: {
+                borderWidth: 5,
+                color: 'rgba(53, 179, 106,0.9)'
+            },
+
+
+            textStyle: {
+                fontSize: 18,
+                // fontWeight: 'bold',
+                color: 'rgb(0, 0, 0)'
+            },
+
+            yAxis: {
+                type: 'value'
+            },
+
+            series: [{
+                name: '新增人数',
+                type: 'line',
+                stack: '总人数',
+                // color: 'rgb(240,240,240)',
+                data: [1000, 3200, 5000, 8080, 14500]
+            }]
+        };;
+        if (option && typeof option === "object") {
+            myChart.setOption(option, true);
+        }
+    }
+
+
+    //累积人数统计
+    function lineMapCumulativeStatistics() {
+        var dom = document.getElementById("lineMapCumulativeStatistics");
+        var myChart = echarts.init(dom);
+        var app = {};
+        option = null;
+        option = {
+            title: {
+                // text: '折线图堆叠'
+            },
+
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['累积人数']
+            },
+            grid: {
+                left: '2%',
+                right: '6%',
+                bottom: '20%',
+                containLabel: true
+            },
+
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['2017-01-01', '2017-03-01', '2017-05-01', '2017-08-01', '2017-10-01']
+            },
+
+
+            lineStyle: {
+                borderWidth: 5,
+                color: 'rgba(53, 179, 106,0.9)'
+            },
+
+
+            textStyle: {
+                fontSize: 18,
+                // fontWeight: 'bold',
+                color: 'rgb(0, 0, 0)'
+            },
+
+            yAxis: {
+                type: 'value'
+            },
+
+            series: [{
+                name: '累积人数',
+                type: 'line',
+                stack: '总人数',
+                // color: 'rgb(240,240,240)',
+                data: [1234, 2532, 4562, 7685, 25465]
+            }]
+        };;
+        if (option && typeof option === "object") {
+            myChart.setOption(option, true);
+        }
+    }
+</script>

@@ -1,0 +1,125 @@
+<div id="view-user-feedback" class="app-center">
+    <div class="app-nav-serach">
+        <span>用户反馈</span>
+        <div class="right-serach">
+            <div class="serach-content">
+                <form class="layui-form" action="">
+                    <div class="layui-form-item" style="margin-bottom:0;">
+                        <div class="layui-input-block">
+                            <select name="city" lay-verify="required">
+                                <option value="0">全部</option>
+                                <option value="1">最近一周</option>
+                                <option value="2">今天</option>
+                                <option value="3">昨天</option>
+                                <option value="4">前天</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="user-feedback-list" p-each="userFeedBack">
+        <div class="user-feedback-box">
+            <div class="user-feedback-box-basic">
+                <a href="#!my_feedback" class="classify">
+                    <img p-bind="src:{{userFlag}}" alt="">
+                </a>
+                <div class="describe">
+                    <div class="describe-top">
+                        <div class="username">{{userName}}</div>
+                        <div class="orgname">{{orgName}}</div>
+                        <div class="date">{{replyDate}}</div>
+                        <div class="isreply" p-if="{{isreply}}==0">未回复</div>
+                        <div class="isreply" p-if="{{isreply}}==1">已回复</div>
+                    </div>
+                    <div class="describe-bottom">
+                        为什么报修应用不可以用了呢？ 难道是我没有充钱，难道是我没有充钱，难道是我没有充钱，所以用不了了？
+                    </div>
+                </div>
+                <div class="operation">
+                    <a class="reply">
+                        <img src="assets/images/reply.png" alt="">
+                    </a>
+                    <div class="collection">
+                    </div>
+                </div>
+            </div>
+            <div class="user-feedback-box-reply">
+                <div class="replybox">
+                    <textarea name="" id="" placeholder="请输入回复内容..."></textarea>
+                </div>
+                <div class="prompt">
+                    您还可以输入600字
+                </div>
+                <div class="operation">
+                    <button class="retract">收起</button>
+                    <button class="reply">回复</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="user-feedback-page" style="text-align: right;"></div>
+</div>
+<script>
+    layui.use(['layer', 'admin', 'form', 'index', 'config', 'laypage'], function() {
+        var form = layui.form;
+        var layer = layui.layer;
+        var admin = layui.admin;
+        var index = layui.index;
+        var laypage = layui.laypage;
+
+        laypage.render({
+            elem: 'user-feedback-page',
+            count: 100,
+            theme: '#1E9FFF'
+        });
+
+        Q.reg('my_feedback', function() {
+            var menuId = 'my_feedback';
+            var menuPath = 'pages/manage/my_feedback.html';
+            var menuName = '我的反馈';
+            index.loadView(menuId, menuPath, menuName);
+        });
+
+        //用户反馈
+        $(".user-feedback-box-basic .operation .collection").click(function() {
+            $(this).toggleClass("active");
+        });
+
+        $(".user-feedback-box-reply .replybox textarea").keyup(function() {
+            var len = $(this).val().length;
+            if (len > 600) {
+                $(this).val($(this).val().substring(0, 600));
+            }
+            var num = 600 - len;
+
+            $(".user-feedback-box-reply .prompt").text("您还可以输入" + num + "字");
+        });
+
+        $(".user-feedback-box-reply .operation .retract").click(function() {
+            $(this).parents(".user-feedback-box-reply").hide();
+        });
+
+        $(".user-feedback-box-basic .operation .reply").click(function() {
+            var $reply = $("div.user-feedback-list").find(".user-feedback-box-reply");
+            $reply.each(function() {
+                $(".user-feedback-box-reply").hide();
+            });
+            $(this).parents(".user-feedback-box-basic").next(".user-feedback-box-reply").show();
+        });
+    });
+
+    var dataList = {
+        userFeedBack: [{
+            userFlag: 'assets/images/flag.png',
+            userName: '有你更精彩',
+            orgName: '长沙菩明科技',
+            replyDate: '2018-01-10 20:30:42',
+            isreply: '1',
+            userDesc: '为什么报修应用不可以用了呢？ 难道是我没有充钱，难道是我没有充钱，难道是我没有充钱，所以用不了了？',
+        }]
+    };
+
+    $("#view-user-feedback").vm(dataList);
+</script>

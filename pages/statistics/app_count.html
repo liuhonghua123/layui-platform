@@ -1,0 +1,443 @@
+<div id="app-view" class="app-count">
+    <div class="app-nav-serach">
+        <span>应用统计</span>
+    </div>
+    <!--应用使用统计-->
+    <div class="app-count-box">
+        <!-- 应用分类统计 -->
+        <div class="type-left">
+            <h3>分类统计</h3>
+            <div id="typeCount" class="type-count-list"></div>
+        </div>
+        <!-- 应用频次统计 -->
+        <div class="type-left">
+            <h3>频次统计</h3>
+            <div id="numCount" class="type-count-list"></div>
+        </div>
+        <!-- <div class="type-right">
+            <h3>应用清单</h3>
+            <div class="type-count-list">
+                <div class="type-count-box">
+                    <div class="type-count-items" p-each="appType">
+                        <a href="#" class="type-count-item">
+                            <img p-bind="src:{{src}}" alt="">
+                            <p class="name">{{name}}</p>
+                            <span class="date">{{date}}</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        应用频次统计
+        <div class="type-left">
+            <h3>频次统计</h3>
+            <div id="numCount" class="type-count-list"></div>
+        </div>
+        <div class="type-right">
+            <h3>常用应用</h3>
+            <div class="type-count-list">
+                <div class="type-count-box">
+                    <div class="type-count-items" p-each="appType">
+                        <a href="#" class="type-count-item">
+                            <img p-bind="src:{{src}}" alt="">
+                            <p class="name">{{name}}</p>
+                            <span class="date">{{date}}</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+    <!--时段统计-->
+    <div class="mood">
+        <div class="width-title fl">时段统计</div>
+        <div class="mood-type">
+            <ul>
+                <li class="active">
+                    <a>7天</a>
+                </li>
+                <li>
+                    <a>15天</a>
+                </li>
+                <li>
+                    <a>30天</a>
+                </li>
+                <li>
+                    <a>半年</a>
+                </li>
+                <li>
+                    <a>一年</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="timeCount"></div>
+</div>
+
+<script type="text/javascript">
+    //时段统计切换
+    $(".mood-type li").click(function() {
+        $(this).siblings().removeClass("active");
+        $(this).addClass("active");
+    });
+
+    var dataList = {
+        //应用清单
+        appType: [{
+            index: 1,
+            src: 'assets/images/640.png',
+            name: '查考试',
+            date: '2018-01-10'
+        }, {
+            index: 2,
+            src: 'assets/images/640.png',
+            name: '查考试',
+            date: '2018-01-10'
+        }, {
+            index: 3,
+            src: 'assets/images/640.png',
+            name: '查考试',
+            date: '2018-01-10'
+        }, {
+            index: 4,
+            src: 'assets/images/640.png',
+            name: '查考试',
+            date: '2018-01-10'
+        }, {
+            index: 5,
+            src: 'assets/images/640.png',
+            name: '查考试',
+            date: '2018-01-10'
+        }, {
+            index: 6,
+            src: 'assets/images/640.png',
+            name: '查考试',
+            date: '2018-01-10'
+        }]
+    };
+
+    layui.use('element', function() {
+        var element = layui.element;
+        $('#app-view').vm(dataList);
+    });
+
+    //应用分类统计
+    var windowScreen = $(window).outerWidth();
+    var fs = 18;
+    if (windowScreen < 1100) {
+        fs = 16;
+    }
+    var dom = document.getElementById("typeCount");
+    var myChart = echarts.init(dom);
+    var app = {};
+    option = null;
+    option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        series: [{
+            name: '应用分类',
+            type: 'pie',
+            radius: '50%',
+            center: ['50%', '52%'],
+            label: {
+                normal: {
+                    formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
+                    backgroundColor: '#eee',
+                    borderColor: '#aaa',
+                    borderWidth: 1,
+                    borderRadius: 4,
+                    padding: [0, 0],
+                    rich: {
+                        a: {
+                            fontSize: 14,
+                            color: '#000',
+                            lineHeight: 18,
+                            align: 'center'
+                        },
+                        hr: {
+                            borderColor: '#aaa',
+                            width: '100%',
+                            borderWidth: 0.5,
+                            height: 0
+                        },
+                        b: {
+                            fontSize: 16,
+                            lineHeight: 30
+                        },
+                        per: {
+                            color: '#eee',
+                            backgroundColor: '#334455',
+                            padding: [2, 4],
+                            borderRadius: 2
+                        }
+                    }
+                }
+            },
+            data: [{
+                value: 12,
+                name: '社区',
+                label: {
+                    normal: {
+                        textStyle: {
+                            fontSize: fs,
+                            color: '#fac333'
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        lineStyle: {
+                            color: '#fac333'
+                        },
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#fac333'
+                    }
+                }
+            }, {
+                value: 6,
+                name: '社团',
+                label: {
+                    normal: {
+                        textStyle: {
+                            fontSize: fs,
+                            color: '#55d2fc'
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        lineStyle: {
+                            color: '#55d2fc'
+                        },
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#55d2fc'
+                    }
+                }
+            }, {
+                value: 32,
+                name: '校园',
+                label: {
+                    normal: {
+                        textStyle: {
+                            fontSize: fs,
+                            color: '#266bc6'
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        lineStyle: {
+                            color: '#266bc6'
+                        },
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#266bc6'
+                    }
+                }
+            }],
+            itemStyle: {
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }]
+    };;
+    if (option && typeof option === "object") {
+        myChart.setOption(option, true);
+    }
+
+
+    //应用频次统计
+    var windowScreen = $(window).outerWidth();
+    var fs = 18;
+    if (windowScreen < 1100) {
+        fs = 16;
+    }
+    var dom = document.getElementById("numCount");
+    var myChart = echarts.init(dom);
+    var app = {};
+    option = null;
+    option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        series: [{
+            name: '应用分类',
+            type: 'pie',
+            radius: '50%',
+            center: ['50%', '52%'],
+            label: {
+                normal: {
+                    formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
+                    backgroundColor: '#eee',
+                    borderColor: '#aaa',
+                    borderWidth: 1,
+                    borderRadius: 4,
+                    padding: [0, 0],
+                    rich: {
+                        a: {
+                            fontSize: 14,
+                            color: '#000',
+                            lineHeight: 18,
+                            align: 'center'
+                        },
+                        hr: {
+                            borderColor: '#aaa',
+                            width: '100%',
+                            borderWidth: 0.5,
+                            height: 0
+                        },
+                        b: {
+                            fontSize: 16,
+                            lineHeight: 30
+                        },
+                        per: {
+                            color: '#eee',
+                            backgroundColor: '#334455',
+                            padding: [2, 4],
+                            borderRadius: 2
+                        }
+                    }
+                }
+            },
+            data: [{
+                value: 12,
+                name: '社区',
+                label: {
+                    normal: {
+                        textStyle: {
+                            fontSize: fs,
+                            color: '#fac333'
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        lineStyle: {
+                            color: '#fac333'
+                        },
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#fac333'
+                    }
+                }
+            }, {
+                value: 6,
+                name: '社团',
+                label: {
+                    normal: {
+                        textStyle: {
+                            fontSize: fs,
+                            color: '#55d2fc'
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        lineStyle: {
+                            color: '#55d2fc'
+                        },
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#55d2fc'
+                    }
+                }
+            }, {
+                value: 32,
+                name: '校园',
+                label: {
+                    normal: {
+                        textStyle: {
+                            fontSize: fs,
+                            color: '#266bc6'
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        lineStyle: {
+                            color: '#266bc6'
+                        },
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#266bc6'
+                    }
+                }
+            }],
+            itemStyle: {
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }]
+    };;
+    if (option && typeof option === "object") {
+        myChart.setOption(option, true);
+    }
+
+
+    //应用时段统计
+    var dom = document.getElementById("timeCount");
+    var myChart = echarts.init(dom);
+    var app = {};
+    option = null;
+    app.title = '堆叠柱状图';
+
+    option = {
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+            }
+        },
+        legend: {
+            data: ['使用人数', '日均流量']
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: [{
+            type: 'category',
+            data: ['查成绩', '查考试', '校园跑腿', '智能报修', '校历', '水电充值', '查课表']
+        }],
+        yAxis: [{
+            type: 'value'
+        }],
+        series: [{
+            name: '使用人数',
+            type: 'bar',
+            data: [320, 332, 301, 334, 390, 330, 320]
+        }, {
+            name: '日均流量',
+            type: 'bar',
+            data: [862, 1018, 964, 1026, 1679, 1600, 1570],
+        }]
+    };;
+    if (option && typeof option === "object") {
+        myChart.setOption(option, true);
+    }
+</script>

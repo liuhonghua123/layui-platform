@@ -1,0 +1,132 @@
+<div class="app-center" id="app-view">
+    <div class="app-nav-serach">
+        <span>应用管理</span>
+        <div class="right-serach">
+            <div class="serach-content">
+                <input type="text" class="serach fl" placeholder="请输入关键词搜索">
+                <input type="button" name="" id="" class="serach-icon" value="">
+            </div>
+        </div>
+    </div>
+    <div class="app-manage-nav">
+        <div class="sort">排序：</div>
+        <div class="time">时间</div>
+        <div class="num">人数</div>
+        <div class="add-button">新增</div>
+    </div>
+    <div class="app-manage-list" p-each="appManageBox">
+        <div class="app-manage-box">
+            <div class="classify">
+                <a href="#!app_details" class="icon">
+                    <img p-bind="src:{{icon}}" alt="">
+                </a>
+                <span>{{name}}</span>
+                <span>分类：{{type}}</span>
+            </div>
+            <div class="describe">
+                <div class="explain">
+                    {{describe}}
+                </div>
+                <div class="amount">
+                    <div class="public">
+                        <i>{{wxCount}}</i> 公众号在使用
+                    </div>
+                    <div class="public">
+                        <i>{{userCount}}</i> 用户访问量
+                    </div>
+                    <div class="public">
+                        上架时间：{{onLineTime}}
+                    </div>
+                </div>
+            </div>
+            <div class="operation">
+                <div class="static">
+                    状态
+                    <span p-if="{{isEmpty}}">已发布</span>
+                </div>
+                <div class="button">
+                    <a class="layui-btn layui-btn-xs" lay-event="">修改</a>
+                    <a class="layui-btn layui-btn-danger layui-btn-xs" style="margin-left: 8px;" lay-event="">禁用</a>
+                    <a class="layui-btn layui-btn-normal layui-btn-xs" style="margin-left: 8px;" lay-event="">启用</a>
+                    <a class="layui-btn layui-btn-normal layui-btn-xs" style="margin-left: 8px;" lay-event="">查看</a>
+                    <a class="layui-btn layui-btn-normal layui-btn-xs" style="margin-left: 8px;" lay-event="">发布</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="app-manage-page" style="text-align: right;"></div>
+</div>
+
+<script>
+    layui.use(['layer', 'admin', 'form', 'index', 'config', 'laypage'], function() {
+        var layer = layui.layer;
+        var admin = layui.admin;
+        var index = layui.index;
+        var form = layui.form;
+        var laypage = layui.laypage;
+
+        laypage.render({
+            elem: 'app-manage-page',
+            count: 100,
+            theme: '#1E9FFF'
+        });
+
+        Q.reg('app_details', function() {
+            var menuId = 'app_details';
+            var menuPath = 'pages/application/app_details.html';
+            var menuName = '应用程序详情页';
+            index.loadView(menuId, menuPath, menuName);
+        });
+    });
+
+    var appManageDate = {
+        appManageBox: [{
+            icon: "assets/images/641.png",
+            name: "校园社交",
+            type: "社交类",
+            describe: "应用描述应用描述应用应用描述应用描述应用描述应用",
+            wxCount: "1234",
+            userCount: "1234",
+            onLineTime: "2018-10-01",
+            isEmpty: "true"
+        }, {
+            icon: "assets/images/641.png",
+            name: "校园社交",
+            type: "社交类",
+            describe: "应用描述应用描述应用应用描述应用描述应用描述应用",
+            wxCount: "1234",
+            userCount: "1234",
+            onLineTime: "2018-10-01",
+            isEmpty: "true"
+        }, {
+            icon: "assets/images/641.png",
+            name: "校园社交",
+            type: "社交类",
+            describe: "应用描述应用描述应用应用描述应用描述应用描述应用",
+            wxCount: "1234",
+            userCount: "1234",
+            onLineTime: "2018-10-01",
+            isEmpty: "true"
+        }, {
+            icon: "assets/images/641.png",
+            name: "校园社交",
+            type: "社交类",
+            describe: "应用描述应用描述应用应用描述应用描述应用描述应用",
+            wxCount: "1234",
+            userCount: "1234",
+            onLineTime: "2018-10-01",
+            isEmpty: "true"
+        }, {
+            icon: "assets/images/641.png",
+            name: "校园社交",
+            type: "社交类",
+            describe: "应用描述应用描述应用应用描述应用描述应用描述应用",
+            wxCount: "1234",
+            userCount: "1234",
+            onLineTime: "2018-10-01",
+            isEmpty: "true"
+        }]
+    };
+
+    $("#app-view").vm(appManageDate);
+</script>

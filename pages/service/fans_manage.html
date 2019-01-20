@@ -1,0 +1,159 @@
+<div class="fans_manage">
+    <div class="app-nav-serach">
+        <span>粉丝管理</span>
+    </div>
+    <div class="fans-wrapper">
+        <div class="fans-header">
+            <a href="javascript:void(0);" class="fans-btn right-btn btn-green">同步粉丝</a>
+            <div class="fl">共有455个粉丝</div>
+            <div class="right-serach">
+                <div class="serach-content">
+                    <input type="text" class="serach fl" placeholder="请输入关键词搜索">
+                    <input type="button" name="" id="" class="serach-icon" value="">
+                </div>
+            </div>
+            <div class="right-select fr clearfix">
+                <select class="admin_select">
+                    <option value="-1">全部粉丝</option>
+                    <option value="0">未分组</option>
+                    <option value="1">黑名单</option>
+                    <option value="2">星标组</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="fans-list">
+        <form class="layui-form" action="">
+            <div class="fans-list-box">
+                <div class="checkbox">
+                    <input type="checkbox" name="" title="" lay-skin="primary">
+                </div>
+                <div class="headport">
+                    <img src="assets/images/flag.png" alt="">
+                </div>
+                <div class="describe">
+                    <div class="name">有你更精彩</div>
+                    <div class="country">湖南 衡阳</div>
+                </div>
+                <div class="fansgroup">
+                    <a href="javascript:void(0);">未分组<i></i></a>
+                </div>
+            </div>
+            <div class="fans-list-box">
+                <div class="checkbox">
+                    <input type="checkbox" name="" title="" lay-skin="primary">
+                </div>
+                <div class="headport">
+                    <img src="assets/images/flag.png" alt="">
+                </div>
+                <div class="describe">
+                    <div class="name">有你更精彩</div>
+                    <div class="country">湖南 衡阳</div>
+                </div>
+                <div class="fansgroup">
+                    <a href="javascript:void(0);">未分组<i></i></a>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="checkall">
+                    <input type="checkbox" name="" title="全选" lay-skin="primary">
+                </div>
+                <input type="submit" class="group-move" value="移动分组">
+                <input type="submit" class="group-add" value="添加分组">
+            </div>
+        </form>
+    </div>
+    <div id="fans-manage-page" style="text-align: right;"></div>
+</div>
+
+<!--显示移动分组弹窗-->
+<script type="text/html" id="user-no-group">
+    <form id="user-no-group" lay-filter="user-no-group-form" class="layui-form model-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="padding:9px 0;">移动到</label>
+            <div class="layui-input-block">
+                <select name="group" lay-verify="required">
+                    <option value="-1">全部粉丝</option>
+                    <option value="0">未分组</option>
+                    <option value="1">黑名单</option>
+                    <option value="2">星标组</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item model-form-footer">
+            <button class="layui-btn layui-btn-primary" ew-event="closeDialog" type="button">取消</button>
+            <button class="layui-btn green-btn" lay-filter="user-no-group-submit" lay-submit>保存</button>
+        </div>
+    </form>
+</script>
+
+<!--显示添加分组弹窗-->
+<script type="text/html" id="user-add-group">
+    <form id="user-add-group" lay-filter="user-add-group-form" class="layui-form model-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="padding:9px 0;">分组名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" required lay-verify="required" placeholder="请输入分组名称" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item model-form-footer">
+            <button class="layui-btn layui-btn-primary" ew-event="closeDialog" type="button">取消</button>
+            <button class="layui-btn green-btn" lay-filter="user-add-group-submit" lay-submit>保存</button>
+        </div>
+    </form>
+</script>
+
+<script>
+    layui.use(['layer', 'form', 'laypage'], function() {
+        var layer = layui.layer;
+        var form = layui.form;
+        var laypage = layui.laypage;
+
+        form.render();
+
+        laypage.render({
+            elem: 'fans-manage-page',
+            count: 100,
+            theme: '#1E9FFF'
+        });
+
+        //用户分组点击事件
+        $(".fansgroup a").click(function() {
+            showNoGroupModel();
+        });
+        $(".group-move").click(function() {
+            showNoGroupModel();
+        });
+
+        //添加分组点击事件
+        $(".group-add").click(function() {
+            showAddGroupModel();
+        });
+
+        //显示移动分组弹窗
+        var showNoGroupModel = function() {
+            layer.open({
+                type: 1,
+                title: '移动分组',
+                area: ['450px', '350px'],
+                content: $('#user-no-group').html(),
+                success: function() {
+
+                }
+            });
+        }
+
+        //显示用户分组弹窗
+        var showAddGroupModel = function() {
+            layer.open({
+                type: 1,
+                title: '添加分组',
+                area: ['450px', '350px'],
+                content: $('#user-add-group').html(),
+                success: function() {
+
+                }
+            });
+        }
+    });
+</script>

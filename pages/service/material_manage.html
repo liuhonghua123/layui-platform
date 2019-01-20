@@ -1,0 +1,75 @@
+<div class="material_manage">
+    <div class="app-nav-serach">
+        <span>素材管理</span>
+    </div>
+    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" style="margin:0;">
+        <ul class="layui-tab-title" style="margin-bottom:20px;">
+            <li class="layui-this">图文消息</li>
+            <li>图片库</li>
+            <li>语音</li>
+            <li>视频</li>
+        </ul>
+        <div class="layui-tab-content" style="padding:0;">
+            <!--图文消息-->
+            <div class="layui-tab-item layui-show">
+                <div class="material-wrapper">
+                    <div class="right-serach">
+                        <div class="serach-content">
+                            <input type="text" class="serach fl" placeholder="请输入标题、作者、摘要搜索">
+                            <input type="button" name="" id="" class="serach-icon" value="">
+                        </div>
+                    </div>
+                    <div class="material-header">
+                        <a href="javascript:void(0);" class="material-btn right-btn btn-green">新建图文信息</a>
+                        <a href="javascript:void(0);" class="material-btn right-btn btn-gray">同步图文</a>
+                    </div>
+                </div>
+                <div class="material-info" style="height:28px;line-height: 28px;margin-bottom: 9px;">图文消息（共1个）</div>
+                <div class="material-list">
+                    <div class="material-list-box">
+                        <div class="logo">
+                            <img src="assets/images/flag.png" alt="">
+                        </div>
+                        <div class="describe">
+                            <span class="items_title">
+                                <a href="#">1. 湖南省芷江民族师范学校概况</a>
+                            </span>
+                        </div>
+                        <div class="time">2018-09-29 09:10:15</div>
+                        <div class="operate">
+                            <a href="#" style="display: inline-block; padding: 0 5px; color: #0866AE;">编辑</a>
+                            <a href="#" style="display: inline-block; padding: 0 5px; color: #0866AE;">删除</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="material-manage-page" style="text-align: right;"></div>
+            </div>
+            <!--图片库-->
+            <div class="layui-tab-item">
+                正在建设...
+            </div>
+            <!--语音-->
+            <div class="layui-tab-item">
+                正在建设...
+            </div>
+            <!--视频-->
+            <div class="layui-tab-item">
+                正在建设...
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    layui.use(['layer', 'admin', 'form', 'index', 'config', 'laypage'], function() {
+        var layer = layui.layer;
+        var admin = layui.admin;
+        var form = layui.form;
+        var laypage = layui.laypage;
+
+        laypage.render({
+            elem: 'material-manage-page',
+            count: 100,
+            theme: '#1E9FFF'
+        });
+    });
+</script>

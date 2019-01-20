@@ -1,0 +1,498 @@
+/*==========================
+        头部导航部分
+===========================*/
+
+.header {
+    position: relative;
+    min-width: 1200px;
+    height: 54px;
+    line-height: 54px;
+    background-color: #fff;
+    margin: 0 auto;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+    -o-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+}
+
+.header .header-inner {
+    width: 1200px;
+    height: 54px;
+    margin: 0 auto;
+}
+
+.header .user {
+    float: right;
+    text-align: right;
+    position: relative;
+    height: 54px;
+}
+
+.header .user .dropdown-title {
+    display: block;
+    width: auto;
+    height: auto;
+    padding: 0 10px;
+    font-size: 12px;
+    color: #999;
+    float: left;
+}
+
+.header .user a {
+    text-decoration: none;
+}
+
+.header .user .avatar {
+    height: 24px;
+    width: 24px;
+    border-radius: 24px;
+    vertical-align: middle;
+}
+
+.header .user .flag {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: top;
+    border-top: 4px solid #000;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+    content: "";
+    opacity: .3;
+    margin: 27px 0 0 5px;
+}
+
+.header a span {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.dropdown-title span.active-hover {
+    color: #35b36a;
+    text-decoration: none;
+}
+
+.header .user .flag-hover {
+    border-top-color: #35b36a;
+    opacity: 1;
+}
+
+.header .user .dropdown-menu {
+    display: none;
+    float: left;
+    position: absolute;
+    left: auto;
+    right: 0;
+    top: 53px;
+    width: 100%;
+    min-width: 90px;
+    font-size: 12px;
+    border-radius: 0;
+    border: 0;
+    padding: 10px 0 10px 0;
+    z-index: 1000;
+    margin: 1px 0 0;
+    list-style: none;
+    background-color: #fff;
+    border-top: 1px solid #e7e7eb;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+    -o-box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+}
+
+.header .user li {
+    height: 34px;
+    line-height: 34px;
+}
+
+.header .user li a {
+    text-align: center;
+    height: 34px;
+    line-height: 34px;
+    color: #666;
+    display: block;
+}
+
+.header .user li a:hover {
+    background-color: #F3F3F3;
+    color: #000;
+}
+
+.header .user .dropdown-menu:before,
+.header .user .dropdown-menu:after {
+    right: 6px;
+    top: -8px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    -ms-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    transition: all .2s ease;
+    border-width: 8px;
+    margin-left: -7px;
+    margin-top: -8px;
+    border-color: rgba(221, 221, 221, 0);
+    border-bottom-color: #ddd;
+}
+
+.header .user .dropdown-menu:after {
+    border-color: rgba(255, 255, 255, 0);
+    border-bottom-color: #fff;
+    border-width: 8px;
+    margin-top: -7px;
+}
+
+.header .logo {
+    float: left;
+    line-height: 54px;
+}
+
+.header a {
+    color: #b2b2b2;
+}
+
+.header .logo a {
+    float: left;
+}
+
+.header .logo a img {
+    vertical-align: top;
+}
+
+.header .logo a:first-child {
+    margin-right: 10px;
+}
+
+
+/*==========================
+        版权所有部分
+===========================*/
+
+.footer {
+    margin: 0 auto;
+    text-align: center;
+    color: #777;
+    padding: 30px 0;
+    line-height: 24px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+}
+
+.footer ul {
+    margin-bottom: 10px;
+}
+
+.footer ul li {
+    display: inline-block;
+}
+
+.footer a {
+    color: #777;
+    margin-left: 10px;
+    padding-right: 10px;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.footer a:hover {
+    color: #000;
+}
+
+.footer .yunmeng {
+    /* width: 112px; */
+    height: 24px;
+    font-size: 14px;
+    font-weight: 700;
+    /* vertical-align: middle;
+    background: url(../images/puming.png)no-repeat center; */
+}
+
+.footer .copyright {
+    font-size: 12px;
+}
+
+.green-btn {
+    background-color: #35b36a;
+}
+
+
+/*==========================
+       平台管理部分
+===========================*/
+
+.console-wrap {
+    position: relative;
+    overflow: hidden;
+}
+
+.console-platform-items {
+    overflow: hidden;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    border: 1px solid #E7E7E7;
+}
+
+.console-platform-items .title {
+    height: 30px;
+    overflow: hidden;
+    padding: 0 20px;
+    margin-bottom: 10px;
+}
+
+.console-platform-items .title span {
+    float: left;
+    font-size: 16px;
+    color: #000;
+    margin-right: 20px;
+}
+
+.console-platform-items .title em {
+    font-size: 12px;
+    color: #999;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.console-platform-items .stat {
+    float: left;
+    overflow: hidden;
+    display: inline-block;
+    width: 319px;
+    padding-left: 140px;
+    height: 105px;
+    line-height: 30px;
+    border-right: #e7e7eb 1px solid;
+    color: #fff;
+}
+
+.console-platform-items .stat a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.console-platform-items .increase {
+    color: #2296f3;
+    background: url(../images/stat_icon_increase.png) 30px 10px no-repeat;
+}
+
+.console-platform-items .message {
+    color: #35b36a;
+    background: url(../images/stat_icon_message.png) 30px 10px no-repeat;
+}
+
+.console-platform-items .request {
+    color: #f9702d;
+    background: url(../images/stat_icon_request.png) 30px 10px no-repeat;
+    border-right: none;
+}
+
+.console-platform-items .stat .name {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.console-platform-items .stat .number {
+    font-size: 40px;
+    margin-bottom: 5px;
+}
+
+.console-platform-items .stat .desc {
+    font-size: 14px;
+}
+
+.console-wrap .layui-tab-content ul {
+    max-height: 600px;
+    overflow: hidden;
+}
+
+.console-wrap .layui-tab-content li {
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+    border-bottom: 1px dotted #E7E7E7;
+}
+
+.console-wrap .layui-tab-content .more {
+    line-height: 50px;
+    text-align: right;
+}
+
+.console-wrap .layui-tab-content .more:hover {
+    color: #35a36b;
+}
+
+.console-wrap .layui-tab-content li .article {
+    display: inline-block;
+    width: 820px;
+    height: 50px;
+}
+
+.console-wrap .layui-tab-content li .date {
+    color: #999;
+}
+
+.console-wrap .layui-tab-content li a {
+    color: #000;
+    text-decoration: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.console-wrap .layui-tab-content li a:hover {
+    color: #35a36b;
+    text-decoration: none;
+}
+
+.console-wrap .layui-tab-content li a .article-rank {
+    padding: 1px 7px 1px 7px;
+    margin-right: 8px;
+    background-color: #aaa;
+    color: #fff;
+}
+
+.console-wrap .layui-tab-content li:nth-of-type(1) a .article-rank {
+    background-color: #F9702D;
+}
+
+.console-wrap .layui-tab-content li:nth-of-type(2) a .article-rank {
+    background-color: #2296F3;
+}
+
+.console-wrap .layui-tab-content li:nth-of-type(3) a .article-rank {
+    background-color: #35B36A;
+}
+
+
+/*==========================
+       移动端主页部分
+===========================*/
+
+.move-sphone-header {
+    position: relative;
+    width: 100%;
+    height: 2.4rem;
+}
+
+.move-sphone-header .drop-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: .7rem;
+}
+
+.move-sphone-header .banner-bg {
+    width: 100%;
+    height: 2.4rem;
+}
+
+.move-sphone-header .follow {
+    display: inline-block;
+    position: absolute;
+    right: .15rem;
+    top: .2rem;
+    color: #FFF;
+    height: .3rem;
+    line-height: .3rem;
+    font-size: .16rem;
+    padding: 0 .1rem;
+    border: 1px solid #FFF;
+    border-radius: .15rem;
+}
+
+.move-sphone-header .logo-title {
+    display: inline-block;
+    position: absolute;
+    left: .15rem;
+    top: .15rem;
+    height: .4rem;
+    line-height: .4rem;
+}
+
+.logo-title img {
+    width: .4rem;
+    height: .4rem;
+    vertical-align: middle;
+    margin-right: .05rem;
+    border-radius: 50%;
+}
+
+.logo-title span {
+    color: #FFF;
+    font-size: .16rem;
+}
+
+.move-service-dis-type {
+    background-color: #FFF;
+}
+
+.move-service-dis-type header {
+    height: .4rem;
+    line-height: .4rem;
+    padding-left: .15rem;
+    font-size: .18rem;
+    background-color: #F0F0F0;
+}
+
+.move-service-dis-type .move-drags {
+    border-top: 1px solid #E7E7E7;
+    border-left: 1px solid #E7E7E7;
+}
+
+.move-service-dis-type .move-drags a {
+    color: #333;
+    text-decoration: none;
+}
+
+.move-service-dis-type .move-drags .move-app {
+    float: left;
+    width: 33.333333%;
+    height: 1.4rem;
+    text-align: center;
+    padding: .15rem 0;
+    overflow: hidden;
+    border-right: 1px solid #E7E7E7;
+    border-bottom: 1px solid #E7E7E7;
+}
+
+.move-drags .move-app img {
+    display: block;
+    width: .8rem;
+    height: .8rem;
+    margin: 0 auto;
+    border-radius: .15rem;
+}
+
+.move-drags .move-app span {
+    width: 100%;
+    height: .25rem;
+    line-height: .25rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+/*==========================
+      改Layui部分样式
+===========================*/
+
+.console-wrap .layui-tab-title li {
+    font-size: 16px;
+}
+
+.console-wrap .layui-tab-title .layui-this {
+    color: #35b36a;
+}
+
+.layui-table,
+.layui-table-view {
+    margin: 0;
+}

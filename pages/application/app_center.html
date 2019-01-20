@@ -1,0 +1,251 @@
+<div class="app-center" id="app-view">
+    <div class="app-nav-serach">
+        <span>
+            <a href="#!app_center" style="display: inline-block;">应用广场</a>
+        </span>
+        <div class="right-serach">
+            <div class="serach-content">
+                <input type="text" class="serach fl" placeholder="请输入关键词搜索">
+                <input type="button" name="" id="" class="serach-icon" value="">
+            </div>
+        </div>
+    </div>
+    <!--产品宣传-->
+    <div class="app-banner">
+        <div class="banner-wrapper clearfix">
+            <div id="carousel" class="banner-shadow layui-carousel">
+                <div carousel-item="">
+                    <a href="">
+                        <img src="assets/images/banner.png" alt="">
+                    </a>
+                    <a href="">
+                        <img src="assets/images/banner.png" alt="">
+                    </a>
+                    <a href="">
+                        <img src="assets/images/banner.png" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="common-tool">
+                <div class="common-tool-top">
+                    <a href="#" class="items-1" p-for="tool">{{@self}}</a>
+                </div>
+                <div class="app-puming-banner">
+                    <img src="assets/images/app_open_banner.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--最新应用-->
+    <div class="app-header">
+        <div class="app-new">
+            <h3>最新应用</h3>
+            <div class="app-new-list">
+                <div class="app-new-box" p-each="appNew">
+                    <a href="#!app_details" class="app-new-items">
+                        <img p-bind="src:{{src}}" alt="">
+                        <p class="name">{{name}}</p>
+                        <span class="date">{{date}}</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--精品应用  内测专区-->
+    <div class="app-middle">
+        <div class="app-fine-test">
+            <div class="app-fine">
+                <h3>
+                    精品应用
+                    <a href="#" class="app-more">更多>></a>
+                </h3>
+                <div class="app-fine-list">
+                    <div class="app-fine-box">
+                        <div class="app-fine-items" p-each="appFine">
+                            <a href="#!app_details" class="app-fine-item">
+                                <img p-bind="src:{{src}}" alt="">
+                                <p class="name">{{name}}</p>
+                                <span class="date">{{date}}</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="app-fine">
+                <h3>
+                    内测专区
+                    <a href="#" class="app-more">更多>></a>
+                </h3>
+                <div class="app-fine-list">
+                    <div class="app-fine-box">
+                        <div class="app-fine-items" p-each="appFine">
+                            <a href="#!app_details" class="app-fine-item">
+                                <img p-bind="src:{{src}}" alt="">
+                                <p class="name">{{name}}</p>
+                                <span class="date">{{date}}</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--热门应用-->
+        <div class="app-hot">
+            <h3>热门应用</h3>
+            <div class="app-hot-list" p-each="appHot">
+                <a href="#!app_details" class="app-hot-item">
+                    <label>{{index}}</label>
+                    <img p-bind="src:{{src}}" alt="">
+                    <div>
+                        <p class="name">{{name}}</p>
+                        <span>
+                            <i>{{num}}</i>
+                            人近期开启
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    layui.use(['carousel', 'form', 'element', 'index'], function() {
+        var carousel = layui.carousel;
+        var element = layui.element;
+        var form = layui.form;
+        var index = layui.index;
+
+        //图片轮播
+        carousel.render({
+            elem: '#carousel',
+            width: '660px',
+            height: '200px',
+            interval: 3000,
+            arrow: 'always', //始终显示箭头
+            anim: 'default' //切换动画方式
+        });
+
+        Q.reg('app_details', function() {
+            var menuId = 'app_details';
+            var menuPath = 'pages/application/app_details.html';
+            var menuName = '应用程序详情页';
+            index.loadView(menuId, menuPath, menuName);
+        });
+    });
+
+    var dataList = {
+        //常用应用
+        tool: ['全部', '教务', '活动', '互动', '查询', '小程序', '工具', '校园卡'],
+
+        //最新应用
+        appNew: [{
+            src: 'assets/images/640.png',
+            name: '查考试',
+            date: '2018-10-01'
+        }, {
+            src: 'assets/images/640.png',
+            name: '查考试',
+            date: '2018-10-01'
+        }, {
+            src: 'assets/images/640.png',
+            name: '查考试',
+            date: '2018-10-01'
+        }, {
+            src: 'assets/images/640.png',
+            name: '查考试',
+            date: '2018-10-01'
+        }, {
+            src: 'assets/images/640.png',
+            name: '查考试',
+            date: '2018-10-01'
+        }, {
+            src: 'assets/images/640.png',
+            name: '查考试',
+            date: '2018-10-01'
+        }],
+
+        //精品应用  内测专区
+        appFine: [{
+            src: 'assets/images/640.png',
+            name: '查考试',
+            date: '2018-10-01'
+        }, {
+            src: 'assets/images/640.png',
+            name: '查考试',
+            date: '2018-10-01'
+        }, {
+            src: 'assets/images/640.png',
+            name: '查考试',
+            date: '2018-10-01'
+        }, {
+            src: 'assets/images/640.png',
+            name: '查考试',
+            date: '2018-10-01'
+        }, {
+            src: 'assets/images/640.png',
+            name: '查考试',
+            date: '2018-10-01'
+        }, {
+            src: 'assets/images/640.png',
+            name: '查考试',
+            date: '2018-10-01'
+        }, {
+            src: 'assets/images/640.png',
+            name: '查考试',
+            date: '2018-10-01'
+        }, {
+            src: 'assets/images/640.png',
+            name: '查考试',
+            date: '2018-10-01'
+        }, {
+            src: 'assets/images/640.png',
+            name: '查考试',
+            date: '2018-10-01'
+        }, {
+            src: 'assets/images/640.png',
+            name: '查考试',
+            date: '2018-10-01'
+        }],
+
+        //热门应用
+        appHot: [{
+            index: 1,
+            src: 'assets/images/640.png',
+            name: '查考试',
+            num: '12345'
+        }, {
+            index: 2,
+            src: 'assets/images/640.png',
+            name: '查考试',
+            num: '12345'
+        }, {
+            index: 3,
+            src: 'assets/images/640.png',
+            name: '查考试',
+            num: '12345'
+        }, {
+            index: 4,
+            src: 'assets/images/640.png',
+            name: '查考试',
+            num: '12345'
+        }, {
+            index: 5,
+            src: 'assets/images/640.png',
+            name: '查考试',
+            num: '12345'
+        }, {
+            index: 6,
+            src: 'assets/images/640.png',
+            name: '查考试',
+            num: '12345'
+        }, {
+            index: 7,
+            src: 'assets/images/640.png',
+            name: '查考试',
+            num: '12345'
+        }],
+    };
+
+    //初始化数据
+    $('#app-view').vm(dataList);
+</script>

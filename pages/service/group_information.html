@@ -1,0 +1,132 @@
+<div class="group_information">
+    <div class="app-nav-serach">
+        <span>群发消息</span>
+    </div>
+    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" style="margin:0;">
+        <ul class="layui-tab-title" style="margin-bottom:20px;">
+            <li class="layui-this">新建群发消息</li>
+            <li>已发送</li>
+        </ul>
+        <div class="layui-tab-content" style="padding:0;">
+            <!--新建群发消息-->
+            <div class="layui-tab-item layui-show">
+                <h4 class="group-title">群发对象</h4>
+                <div class="choose-group">
+                    <select class="span2">
+                        <option value="-1">全部粉丝</option>
+                        <option value="0">未分组</option>
+                        <option value="1">黑名单</option>
+                        <option value="2">星标组</option>
+                    </select>
+                </div>
+                <div class="choose-content">
+                    <h4 class="group-title">群发内容</h4>
+                    <div class="umeditor-text">
+                        <script type="text/plain" id="myEditor" style="width:100%;height:280px;">
+                            <p>这里我可以写一些输入提示</p>
+                        </script>
+                    </div>
+                    <div class="control-cont">
+                        <input type="submit" class="send-out" value="发送">
+                    </div>
+                </div>
+            </div>
+            <!--已发送消息-->
+            <div class="layui-tab-item">
+                <div class="layui-card-body" style="padding: 0;">
+                    <table class="layui-table" id="group-information" lay-filter="user-table" style="margin: 0;"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    layui.use(['form', 'table', 'util', 'config', 'admin', 'tempData', 'element', 'jquery'], function() {
+        var form = layui.form;
+        var table = layui.table;
+        var config = layui.config;
+        var layer = layui.layer;
+        var util = layui.util;
+        var admin = layui.admin;
+        var tempData = layui.tempData;
+
+        //Tab的切换功能，切换事件监听等，需要依赖element模块
+        var $ = layui.jquery,
+            element = layui.element;
+
+        // 已发送消息记录
+        table.render({
+            elem: '#group-information',
+            data: tempData.groupInformation,
+            method: 'GET',
+            page: true,
+            cols: [
+                [{
+                    field: 'newsId',
+                    sort: true,
+                    title: '编号'
+                }, {
+                    field: 'news',
+                    sort: true,
+                    title: '消息'
+                }, {
+                    field: 'sendObject',
+                    sort: true,
+                    title: '发送对象'
+                }, {
+                    field: 'sendStaic',
+                    sort: true,
+                    title: '发送状态'
+                }, {
+                    field: 'sendTime',
+                    sort: true,
+                    title: '发送时间',
+                }, {
+                    field: 'operate',
+                    sort: true,
+                    title: '操作'
+                }]
+            ]
+        });
+
+
+        //新建群发消息  已发送消息切换触发事件
+        var active = {
+            tabAdd: function() {
+                //新增一个Tab项
+                element.tabAdd('demo', {
+                    title: '新选项' + (Math.random() * 1000 | 0), //用于演示
+                    content: '内容' + (Math.random() * 1000 | 0),
+                    id: new Date().getTime() //实际使用一般是规定好的id，这里以时间戳模拟下
+                })
+            },
+            tabDelete: function(othis) {
+                //删除指定Tab项
+                element.tabDelete('demo', '44'); //删除：“商品管理”
+                othis.addClass('layui-btn-disabled');
+            },
+            tabChange: function() {
+                //切换到指定Tab项
+                element.tabChange('demo', '22'); //切换到：用户管理
+            }
+        };
+
+        $('.site-demo-active').on('click', function() {
+            var othis = $(this),
+                type = othis.data('type');
+            active[type] ? active[type].call(this, othis) : '';
+        });
+
+        //Hash地址的定位
+        var layid = location.hash.replace(/^#test=/, '');
+        element.tabChange('test', layid);
+        element.on('tab(test)', function(elem) {
+            location.hash = 'test=' + $(this).attr('lay-id');
+        });
+
+
+
+        //实例化umeditor编辑器
+        var um = UM.getEditor('myEditor');
+    });
+</script>

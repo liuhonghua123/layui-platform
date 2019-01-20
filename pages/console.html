@@ -1,0 +1,247 @@
+<div id="view-console" class="console-wrap">
+    <div class="app-nav-serach">
+        <span>平台管理</span>
+    </div>
+    <!-- 今日数据  接收消息  应用请求-->
+    <div class="console-platform-items">
+        <div class="title">
+            <span>今日数据</span>
+            <em>午后的点滴时光，是整理一天运营的最佳时机，加油！</em>
+        </div>
+        <div class="stat increase">
+            <p class="name">粉丝增量</p>
+            <p class="number">3</p>
+            <p class="desc"><a href="#">共有446个粉丝</a></p>
+        </div>
+        <div class="stat message">
+            <p class="name">接收消息</p>
+            <p class="number">9</p>
+            <p class="desc"><a href="#">昨天共收到13条消息</a></p>
+        </div>
+        <div class="stat request">
+            <p class="name">应用请求</p>
+            <p class="number">1</p>
+            <p class="desc"><a href="#">已开启10个应用</a></p>
+        </div>
+    </div>
+    <div class="layui-tab layui-tab-card">
+        <ul class="layui-tab-title">
+            <li class="layui-this">系统公告</li>
+            <li>热门问题</li>
+            <li>我的关注</li>
+            <li>最新热文</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <!-- 系统公告 -->
+                <ul class="systemNotice" p-each="systemNotice">
+                    <li>
+                        <div class="article fl">
+                            <a href="#">
+                                <span class="article-rank">{{listId}}</span>
+                                <i>{{listRecode}}</i>
+                            </a>
+                        </div>
+                        <div class="date fr">{{listDate}}</div>
+                    </li>
+                </ul>
+                <a href="" class="more">更多>></a>
+            </div>
+            <div class="layui-tab-item">
+                <!-- 热门问题 -->
+                <ul class="hotQuestion" p-each="hotQuestion">
+                    <li>
+                        <div class="article fl">
+                            <a href="#">
+                                <span class="article-rank">{{listId}}</span>
+                                <i>{{listRecode}}</i>
+                            </a>
+                        </div>
+                        <div class="date fr">{{listDate}}</div>
+                    </li>
+                </ul>
+                <a href="" class="more">更多>></a>
+            </div>
+            <div class="layui-tab-item">
+                <!-- 我的关注 -->
+                <ul class="myAttention" p-each="myAttention">
+                    <li>
+                        <div class="article fl">
+                            <a href="#">
+                                <span class="article-rank">{{listId}}</span>
+                                <i>{{listRecode}}</i>
+                            </a>
+                        </div>
+                        <div class="date fr">{{listDate}}</div>
+                    </li>
+                </ul>
+                <a href="" class="more">更多>></a>
+            </div>
+            <div class="layui-tab-item">
+                <!-- 最新热文 -->
+                <ul class="newHots" p-each="newHots">
+                    <li>
+                        <div class="article fl">
+                            <a href="#">
+                                <span class="article-rank">{{listId}}</span>
+                                <i>{{listRecode}}</i>
+                            </a>
+                        </div>
+                        <div class="date fr">{{listDate}}</div>
+                    </li>
+                </ul>
+                <a href="" class="more">更多>></a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var dataList = {
+        //系统公告临时数据
+        systemNotice: [{
+            listId: 1,
+            listRecode: '深海“潜蛟”张恒银：怕死不当潜水兵 备年货 迎新春',
+            listDate: '2018-10-05'
+        }, {
+            listId: 2,
+            listRecode: '人社部：去年职工基本养老保险基金累计结余近5万亿',
+            listDate: '2018-10-05'
+        }, {
+            listId: 3,
+            listRecode: '先天和后天,哪一个对人类的影响更大？ 它摊上大事了',
+            listDate: '2018-10-05'
+        }, {
+            listId: 4,
+            listRecode: '张召忠评波兰逮捕中国公民：别招惹了不该惹的国家',
+            listDate: '2018-10-05'
+        }, {
+            listId: 5,
+            listRecode: '我国空天飞机动力获突破：新概念发动机或超车成功',
+            listDate: '2018-10-05'
+        }, {
+            listId: 6,
+            listRecode: '美体操运动员高难度表演网络爆红 视频播放量过亿',
+            listDate: '2018-10-05'
+        }, {
+            listId: 7,
+            listRecode: '48病免费筛查今启动！2019年岳阳4.5万家庭将获益',
+            listDate: '2018-10-05'
+        }, {
+            listId: 8,
+            listRecode: '西洞庭湖恢复15万亩湿地 建立20多个重点鸟类栖息地',
+            listDate: '2018-10-05'
+        }, {
+            listId: 9,
+            listRecode: '全省日照时数为1951年以来同期最低！雨雪又将至',
+            listDate: '2018-10-05'
+        }, {
+            listId: 10,
+            listRecode: '湖南北大学霸亦是最年轻的“最美退役军人”',
+            listDate: '2018-10-05'
+        }, {
+            listId: 11,
+            listRecode: '华容七星墩遗址发现湖南规模最大新石器时代城址',
+            listDate: '2018-10-05'
+        }, {
+            listId: 12,
+            listRecode: '高清| 常德1400名旗袍佳丽齐聚一堂 共迎新春',
+            listDate: '2018-10-05'
+        }],
+
+        //热门问题临时数据
+        hotQuestion: [{
+            listId: 1,
+            listRecode: '广汽丰田全新雷凌或5月上市 特斯拉将装"制造噪音"装置',
+            listDate: '2018-10-05'
+        }, {
+            listId: 2,
+            listRecode: '牢记教训!2018特大车祸盘点 雪佛兰科鲁泽内饰设计官图',
+            listDate: '2018-10-05'
+        }, {
+            listId: 3,
+            listRecode: '国内车企:欢迎特斯拉国产 长安新CS55今年下半年上市',
+            listDate: '2018-10-05'
+        }, {
+            listId: 4,
+            listRecode: '联通电信共6家分公司被纳入电信业务经营不良名单',
+            listDate: '2018-10-05'
+        }, {
+            listId: 5,
+            listRecode: '股票| 沪指窄幅震荡平收 雄安概念股直线拉升(名单)',
+            listDate: '2018-10-05'
+        }, {
+            listId: 6,
+            listRecode: 'NBA常规赛-榜首大战勇士轰倒掘金 首节51分创新纪录',
+            listDate: '2018-10-05'
+        }, {
+            listId: 7,
+            listRecode: '衡阳| 1月20日衡阳宏博猎豹4S店盛大开业暨新春团购会',
+            listDate: '2018-10-05'
+        }, {
+            listId: 8,
+            listRecode: '湖南将对岳麓书院门票调价开听证会',
+            listDate: '2018-10-05'
+        }],
+
+        //我的关注临时数据
+        myAttention: [{
+            listId: 1,
+            listRecode: '中国对外投资1298.3亿美元 养老保险制可持续发展',
+            listDate: '2018-10-05'
+        }, {
+            listId: 2,
+            listRecode: '让年味升华 从山村华丽转身看广东乡村建设',
+            listDate: '2018-10-05'
+        }, {
+            listId: 3,
+            listRecode: '这就是今天的雄安！ 北京城市新总规如何落实',
+            listDate: '2018-10-05'
+        }, {
+            listId: 4,
+            listRecode: '听中国学生念诗 芬兰第一夫人泪流满面',
+            listDate: '2018-10-05'
+        }, {
+            listId: 5,
+            listRecode: '专家：印度跟中国半代以前很像 不会很快取代中国',
+            listDate: '2018-10-05'
+        }, {
+            listId: 6,
+            listRecode: '海关科员管兆津接受监察调查 曾被举报“睡14名代购”',
+            listDate: '2018-10-05'
+        }, {
+            listId: 7,
+            listRecode: '专家：印度跟中国半代以前很像 不会很快取代中国',
+            listDate: '2018-10-05'
+        }],
+
+        //最新热文临时数据
+        newHots: [{
+            listId: 1,
+            listRecode: '高校试卷现“鸡汤情话”：希望函数不是你永远的痛',
+            listDate: '2018-10-05'
+        }, {
+            listId: 2,
+            listRecode: '许达哲：在服务高质量发展中贡献聪明才智',
+            listDate: '2018-10-05'
+        }, {
+            listId: 3,
+            listRecode: '湖南获国家自科基金资助首破7亿 预计今年将超2.2亿',
+            listDate: '2018-10-05'
+        }, {
+            listId: 4,
+            listRecode: '湖南省政府新聘任4名参事和6名文史馆馆员 看看都有谁',
+            listDate: '2018-10-05'
+        }, {
+            listId: 5,
+            listRecode: '湖南将开岳麓书院门票调价听证会 信息公开申请获答复',
+            listDate: '2018-10-05'
+        }, {
+            listId: 6,
+            listRecode: '挪200万逃14年 剖析赌徒社保股长危月蒙的错位人生',
+            listDate: '2018-10-05'
+        }]
+    };
+
+    //加载静态数据
+    $("#view-console").vm(dataList);
+</script>

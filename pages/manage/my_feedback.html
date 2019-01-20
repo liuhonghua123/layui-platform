@@ -1,0 +1,95 @@
+<div class="app-center">
+    <div class="app-nav-serach">
+        <span>
+            <a href="#!user_feedback" style="display:inline-block;">我的反馈</a> / 刘红华的反馈
+        </span>
+    </div>
+    <div class="user-feedback-list">
+        <div class="user-feedback-box">
+            <div class="user-feedback-box-record">
+                <div class="info-from">
+                    <span>用户：有你更精彩</span>
+                    <span>来自：智能报修宝</span>
+                    <span>时间：2018-10-01 23:30:10</span>
+                    <div class="reply"><img src="assets/images/reply.png" alt=""></div>
+                </div>
+                <div class="question">提问：为什么不可以用了呢？</div>
+                <div class="answer">回答：因为没什么充钱啊。</div>
+            </div>
+            <div class="user-feedback-box-reply">
+                <div class="replybox">
+                    <textarea name="" id="" placeholder="请输入回复内容..."></textarea>
+                </div>
+                <div class="prompt">
+                    您还可以输入600字
+                </div>
+                <div class="operation">
+                    <button class="retract">收起</button>
+                    <button class="reply">回复</button>
+                </div>
+            </div>
+        </div>
+        <div class="user-feedback-box">
+            <div class="user-feedback-box-record">
+                <div class="info-from">
+                    <span>用户：有你更精彩</span>
+                    <span>来自：智能报修宝</span>
+                    <span>时间：2018-10-01 23:30:10</span>
+                    <div class="reply"><img src="assets/images/reply.png" alt=""></div>
+                </div>
+                <div class="question">提问：为什么不可以用了呢？</div>
+                <div class="answer">回答：因为没什么充钱啊。</div>
+            </div>
+            <div class="user-feedback-box-reply">
+                <div class="replybox">
+                    <textarea name="" id="" placeholder="请输入回复内容..."></textarea>
+                </div>
+                <div class="prompt">
+                    您还可以输入600字
+                </div>
+                <div class="operation">
+                    <button class="retract">收起</button>
+                    <button class="reply">回复</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="my-feedback-page" style="text-align: right;"></div>
+</div>
+<script>
+    layui.use(['layer', 'admin', 'form', 'index', 'config', 'laypage'], function() {
+        var layer = layui.layer;
+        var admin = layui.admin;
+        var form = layui.form;
+        var laypage = layui.laypage;
+
+        laypage.render({
+            elem: 'my-feedback-page',
+            count: 100,
+            theme: '#1E9FFF'
+        });
+
+        //我的反馈
+        $(".user-feedback-box-reply .replybox textarea").keyup(function() {
+            var len = $(this).val().length;
+            if (len > 600) {
+                $(this).val($(this).val().substring(0, 600));
+            }
+            var num = 600 - len;
+
+            $(".user-feedback-box-reply .prompt").text("您还可以输入" + num + "字");
+        });
+
+        $(".user-feedback-box-reply .operation .retract").click(function() {
+            $(this).parents(".user-feedback-box-reply").hide();
+        });
+
+        $(".user-feedback-box-record .info-from .reply").click(function() {
+            var $reply = $("div.user-feedback-list").find(".user-feedback-box-reply");
+            $reply.each(function() {
+                $(".user-feedback-box-reply").hide();
+            });
+            $(this).parents(".user-feedback-box-record").next(".user-feedback-box-reply").show();
+        });
+    });
+</script>
